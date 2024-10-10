@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nora (Portfolio) Jaafar</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".project").hover(
+                function() {
+                    const imageUrl = $(this).data("image");
+                    $(this).data("originaltext", $(this).html());
+                    $(this).html('<img src="' + imageUrl + '" alt="Portfolio Project Image" />');
+                },
+                function() {
+                    const originalText = $(this).data("originaltext");
+                    $(this).html(originalText);
+                }
+            );
+    $("#showButton").on("click", function() {
+        $("#toggleContent").toggle();
+    });
+
+    const images = [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sheba1.JPG/160px-Sheba1.JPG.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/224px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Felis_catus-cat_on_snow.jpg/358px-Felis_catus-cat_on_snow.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Siam_lilacpoint.jpg/294px-Siam_lilacpoint.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/362px-Cat_August_2010-4.jpg"
+    ];
+    let currentDirectory = 0;
+
+    $("#myGallery").click(function() {
+        $("#myImage").fadeOut(800, function() {
+        currentDirectory = (currentDirectory + 1) % images.length;
+        $(this).attr("src", images[currentDirectory]).fadeIn(800);
+        });
+    });
+});
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Designer/Developer</h1>
+        <div id="myGallery">
+            <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sheba1.JPG/160px-Sheba1.JPG" alt="Nora?">
+            <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/224px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg" alt="Nora2">
+            <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Felis_catus-cat_on_snow.jpg/358px-Felis_catus-cat_on_snow.jpg" alt="Nora3">
+            <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Siam_lilacpoint.jpg/294px-Siam_lilacpoint.jpg" alt="Nora4">
+            <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/362px-Cat_August_2010-4.jpg" alt="Nora5">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a developing developer with many interests!</p>
+    </section>
+
+    <section id="projects">
+        <h2>My Work</h2>
+        <div class="project" data-image="image1.jpg">1</div>
+        <div class="project" data-image="image2.jpg">2</div>
+        <div class="project" data-image="image3.jpg">3</div>
+        <div class="project" data-image="image4.jpg">4</div>
+    </section>
+    
+    
+    <div id="hoverImageContainer" style="display:none;">
+        <img id="hoverImage" src="" alt="Portfolio Project Image" />
+    </div>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>njaafar@stumail.jccc.edu</p>
+        <p>913-596-6789</p>
+    </section>
+
+    <button id="showButton">More Info</button>
+    <div id="toggleContent" style="display:none;">
+        <p>More Info Coming Soon!</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Nora Jaafar</p>
+    </footer>
+
+</body>
+</html>
